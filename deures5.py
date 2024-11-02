@@ -62,23 +62,27 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
-    dreta = x + pixels
-    esquerre = x - pixels
-    amunt = y + pixels
-    avall = y - pixels
     x,y = center_x, center_y
     pixels = 15
-    direccio = dreta
-    if direccio == dreta:
-        coord_x, coord_y = dreta, y
-    elif direccio == esquerre:
-        coord_x, coord_y = esquerre, y
-    elif  direccio == amunt:
-        coord_x, coord_y = x, amunt
-    elif  direccio == avall:
-        coord_x, coord_y = x, avall
+    direccio = 0
 
     
+    
+    for _ in range (25):   
+        if direccio == 0:
+            coord_x, coord_y = x + pixels, y
+        elif direccio == 1:
+            coord_x, coord_y = x - pixels, y
+        elif  direccio == 2:
+            coord_x, coord_y = x, y + pixels
+        elif  direccio == 3:
+            coord_x, coord_y = x, y - pixels
+
+        pygame.draw.line(screen, RED,(x,y), (coord_x,coord_y), 5)
+
+        x,y = coord_x, coord_y
+        direccio = (direccio + 1) % 4
+        pixels += 15
 
 
     # Actualitzar el dibuix a la finestra
