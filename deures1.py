@@ -77,7 +77,8 @@ def app_draw():
     text4 = font3.render("incididunt ut labore et dolore magna aliqua.", True, BLACK)
     screen.blit(text4, (50, 320))
 
-    font4 = pygame.font.SysFont("")
+    text5 = font2.render("YEP#", True, GREEN)
+    screen.blit(text5, (510, 150))
 
 
 
