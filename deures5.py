@@ -78,6 +78,8 @@ def app_draw():
     elif  direccio == avall:
         coord_x, coord_y = x, avall
 
+    
+
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
