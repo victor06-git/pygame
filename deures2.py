@@ -25,16 +25,8 @@ pygame.display.set_caption('Window Title')
 
 # Bucle de l'aplicació
 def main():
-    global font, text, image
-
     is_looping = True
 
-    # Definir el text
-    font = pygame.font.SysFont("Arial", 55)
-    text = font.render('Hello Arial!', True, BLACK)
-
-    
-    
     while is_looping:
         is_looping = app_events()
         app_run()
