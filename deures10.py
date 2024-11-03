@@ -4,9 +4,11 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 import sys
 import cuadricula
-import random
+
 
 # Definir colors
+point = {"x": -1,"y": -1}
+
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -25,7 +27,7 @@ rectangles = [
     { "rect": { "x": 450, "y": 100, "width": 150, "height": 100 }, "color": GREEN },
     { "rect": { "x": 450, "y": 250, "width": 150, "height": 50 }, "color": NAVY }
 ]
-
+square_clicked = -1
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -51,37 +53,28 @@ def main():
 
 # Gestionar events
 def app_events():
-    """global mouse_pos, mouse_down
+    global point, mouse_down
     mouse_inside = pygame.mouse.get_focused() #Indica si el ratolí está en la finestra
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # Botó tancar finestra
             return False
         elif  event.type == pygame.MOUSEMOTION:
             if mouse_inside:
-               mouse_pos["x"] = event.pos[0]
-               mouse_pos["y"] = event.pos[1]
+                point["x"] = event.pos[0]
+                point["y"] = event.pos[1]
             else:
-                mouse_pos["x"] = -1
-                mouse_pos["y"] = -1
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_down = True
-        elif event.type == pygame.MOUSEBUTTONUP:
-            mouse_down = False
-    return True"""
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT: # Botó tancar finestra
-            return False
+                point["x"] = -1
+                point["y"] = -1
     return True
+    
 # Fer càlculs
 def app_run():
-    """global mouse_pos, mouse_down, square_clicked
-    if mouse_down:
-        rectangle = {"x": 100, "y": 150, "width": 200, "height": 50}
-        if cuadricula.is_point_in_rect(mouse_pos, rectangle):
-            square_clicked = True
-    else:
-        square_clicked = False"""
-    pass
+    global point, mouse_down, square_clicked
+    for index in range(len(rectangles)):
+            rect = {"x": rectangles[index]["rect"]["x"],"y": rectangles[index]["rect"]["y"],"width":rectangles[index]["rect"]["width"], "height":rectangles[index]["rect"]["height"]}
+            if cuadricula.is_point_in_rect(point, rect):
+                square_clicked = index
     
 
 # Dibuixar
@@ -97,12 +90,14 @@ def app_draw():
     # quadres
     
     
-    
-    for index in range (0, len(rectangles)):
+    color = BLACK
+    for index in range (len(rectangles)):
         midas = rectangles[index]["rect"]
-        pygame.draw.rect(screen, BLACK, (midas["x"], midas["y"], midas["width"], midas["height"]), 5)
-
-            
+        pygame.draw.rect(screen, color, (midas["x"], midas["y"], midas["width"], midas["height"]))
+        
+        if square_clicked == index:
+            color = rectangles[index]["color"]
+        
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
 
