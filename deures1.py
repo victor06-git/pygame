@@ -58,7 +58,7 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
-    pygame.draw.rect(screen, RED, (50, 50,550, 100))
+    pygame.draw.rect(screen, RED, (50, 50, 550, 100))
     font = pygame.font.SysFont("Arial", 60)
     text0 = font.render('HEADLINE NEWS', True, WHITE,)
     screen.blit(text0, (75, 70))
