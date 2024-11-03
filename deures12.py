@@ -107,6 +107,7 @@ def app_draw():
                     screen.blit(img_sman, (x,y, CELL_SIZE, CELL_SIZE))
                 elif  board[row][col] == 'S':
                     screen.blit(img_snow, (x,y, CELL_SIZE, CELL_SIZE))
+                    
     x = start_x + pos_skater["column"] * CELL_SIZE
     y = start_y + pos_skater["row"] * CELL_SIZE
     screen.blit(img_skater, (x, y, CELL_SIZE, CELL_SIZE))
@@ -120,6 +121,10 @@ def init_board():
     cols =10
 
     board = [['' for _ in range(cols)] for _ in range(rows)]
+
+    place_random_letters('T', 9)
+    place_random_letters('M', 3)
+    place_random_letters('S', 3)
 
 def place_random_letters(letter, count):
     global board 
