@@ -111,6 +111,9 @@ def app_draw():
     y = start_y + pos_skater["row"] * CELL_SIZE
     screen.blit(img_skater, (x, y, CELL_SIZE, CELL_SIZE))
 
+    # Actualitzar el dibuix a la finestra
+    pygame.display.update()
+
 def init_board():
     global board
     rows = 8
@@ -121,16 +124,28 @@ def init_board():
 def place_random_letters(letter, count):
     global board 
 
-    row = random.randint(0, rows - 1)
+    rows = len(board)
+    cols = len(board[0])
+
+    placed = 0
+    while placed < count:    
+        row = random.randint(0, rows - 1)
+        col = random.randint(0, cols - 1)
+        if row != 0 and col != 0 and board[row][col] == '':
+            board[row][col] = letter
+            placed += 1
 
 def is_skiable_cell(row, col):
     global board
 
-    is_within_bounds = 0
+    is_within_bounds = 0 <=  row < len(board) and 0 <= col < len(board[0])
+    if not is_within_bounds:
+        return False
+    
+    cell_content = board[row][col]
+    return cell_content == '' or  cell_content == 'S'  
     
     
-    # Actualitzar el dibuix a la finestra
-    pygame.display.update()
 
 if __name__ == "__main__":
     main()
