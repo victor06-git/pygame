@@ -7,6 +7,7 @@ import pygame
 import sys
 import cuadricula
 from assets.svgmoji.emojis import get_emoji
+import random
 
 # Definir colors
 WHITE = (255, 255, 255)
@@ -116,7 +117,11 @@ def init_board():
     cols =10
 
     board = [['' for _ in range(cols)] for _ in range(rows)]
-    place
+
+def place_random_letters(letter, count):
+    global board 
+
+    row = random.randint(0, rows - 1)
     
     
     # Actualitzar el dibuix a la finestra
