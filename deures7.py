@@ -28,7 +28,6 @@ pygame.display.set_caption('Window Title')
 
 # Bucle de l'aplicació
 def main():
-    global center_x, center_y
     is_looping = True    
     # Centre de la pantalla
     while is_looping:
