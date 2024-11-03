@@ -15,6 +15,7 @@ BLUE  = (0, 0, 255)
 PURPLE = (128, 0, 128)
 ORANGE = (255, 165, 0) 
 PINK = (255,105,180)
+GREY = (200,200,200)
 
 
 pygame.init()
@@ -62,11 +63,33 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
-    x1 = 50
+    y1,y2,y3,y4 = 50,50,100,100 
+    color = 0
     for row in range(8):
-        for column in range(8):    
-            pygame.draw.polygon(screen, BLACK, [(x1,50),(100,50),(100,100),(50,100)])
-            x1 +=  100
+        x1,x2,x3,x4 = 50,100,100,50  
+        for column in range(8): 
+
+            if color  == 0:
+                color1 = GREY
+            elif color == 1:
+                color1 =  BLACK  
+
+            pygame.draw.polygon(screen, color1, [(x1,y1),(x2,y2),(x3,y3),(x4,y4)])
+            x1 += 50 
+            x2 += 50
+            x3 += 50
+            x4 += 50
+            color = (color  + 1) % 2
+        y1  +=  50
+        y2  +=  50
+        y3  +=  50
+        y4  +=  50
+        color = (color  + 1) % 2
+
+
+
+
+            
 
 
     # Actualitzar el dibuix a la finestra
