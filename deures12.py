@@ -122,6 +122,11 @@ def place_random_letters(letter, count):
     global board 
 
     row = random.randint(0, rows - 1)
+
+def is_skiable_cell(row, col):
+    global board
+
+    is_within_bounds = 0
     
     
     # Actualitzar el dibuix a la finestra
