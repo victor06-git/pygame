@@ -88,10 +88,12 @@ def app_draw():
         pygame.draw.polygon(screen, color, points)
     
     greys = [(0,0,0),(25,25,25),(50,50,50),(75,75,75),(100,100,100),(125,125,125)]
+    x6 = 75
     for q in range(0, len(greys)):
-        draw_polygon(screen, greys[q], (x5, 275), 25, 3, 1)
-    
-
+        draw_polygon(screen, greys[q], (x6, 275), 25, 3, 1)
+        #polygons
+        draw_polygon(screen,  greys[q], (x6, 375), 25, 5, 1)
+        x6 += 100
         
         
 
