@@ -4,6 +4,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 import sys
 import cuadricula
+from assets.svgmoji.emojis import get_emoji
 
 # Definir colors
 WHITE = (255, 255, 255)
@@ -15,7 +16,6 @@ PURPLE = (128, 0, 128)
 ORANGE = (255, 165, 0) 
 PINK = (255,105,180)
 
-
 pygame.init()
 clock = pygame.time.Clock()
 
@@ -23,6 +23,25 @@ clock = pygame.time.Clock()
 screen = pygame.display.set_mode((640, 480))
 pygame.display.set_caption('Window Title')
 
+#Cotxe
+path = os.path.join(os.path.dirname(__file__), "./assets/exercici13/car.png")
+img_car = pygame.image.load(path).convert_alpha()
+img_car = cuadricula.scale_image(pygame, img_car, target_width=15)
+
+#Circuit
+path = os.path.join(os.path.dirname(__file__), "./assets/exercici13/circuit.png")
+img_circuit = pygame.image.load(path).convert_alpha()
+img_circuit = cuadricula.scale_image(pygame, img_circuit, target_height=480)
+
+car = {
+    "x": 245,
+    "y": 430,
+    "angle": 270,
+    "speed": 100,
+    "img": img_car,
+    "direction_x": "none",
+    "direction_y": "none",
+}
 # Bucle de l'aplicació
 def main():
     is_looping = True
