@@ -55,15 +55,15 @@ def app_draw():
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
     
-    
+    center = {"x":300,"y":250}
     for angle in range(0, 361, 15):
 
-        pos_x_y = cuadricula.point_on_circle({"x": 300, "y": 250}, 25, angle)
-        pos2_x_y = cuadricula.point_on_circle({"x": 300, "y": 250}, 150, angle)
+        pos_x_y = cuadricula.point_on_circle(center, 25, angle)
+        pos2_x_y = cuadricula.point_on_circle(center, 150, angle)
 
         prev_angle = angle - 15
-        prev_pos = cuadricula.point_on_circle({"x": 300, "y": 250}, 25, prev_angle)
-        prev_pos2 = cuadricula.point_on_circle({"x": 300, "y": 250}, 150, prev_angle) 
+        prev_pos = cuadricula.point_on_circle(center, 25, prev_angle)
+        prev_pos2 = cuadricula.point_on_circle(center, 150, prev_angle) 
 
         color = cuadricula.hsl_to_rgb(angle, 1.0, 0.5)
 
@@ -74,7 +74,6 @@ def app_draw():
             (int(prev_pos2["x"]), int(prev_pos2["y"]))
         ]
         
-
         pygame.draw.polygon(screen, color, points)
 
 
