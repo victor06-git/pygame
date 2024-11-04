@@ -57,8 +57,9 @@ def app_draw():
     
     
     for angle in range(0, 361, 15):
-        pos_x_y = cuadricula.point_on_circle((300,250), 25, angle)
-        pos2_x_y = cuadricula.point_on_circle((300,250), 100, angle)
+
+        pos_x_y = cuadricula.point_on_circle({"x": 300, "y": 250}, 25, angle)
+        pos2_x_y = cuadricula.point_on_circle({"x": 300, "y": 250}, 150, angle)
 
         pos0 = (pos_x_y["x"], pos_x_y["y"])
         pos1 = (pos2_x_y["x"], pos2_x_y["y"])
