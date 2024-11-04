@@ -54,14 +54,20 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
+    rows = 15
     columns = 21
+    light_step = (1 / rows)
     hue_step = (360 / columns)
-    for column in range(0, columns):
-        x = 50 + column * 25
-        hue = hue_step * column
+    for row in range(0, rows):
+        y = 50 + row * 25
+        lightness = light_step * row
+        for column in range(0, columns):
+            x = 50 + column * 25
+            hue =  hue_step * column
 
-        color = cuadricula.hsl_to_rgb(hue,  1.0, 0.5)
-        pygame.draw.rect(screen, color, (x, 200, 25, 25))
+            color = cuadricula.hsl_to_rgb(hue, 1.0, lightness)
+            pygame.draw.rect(screen, color, (x, y, 25, 25))
+
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
