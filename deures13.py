@@ -9,12 +9,7 @@ from assets.svgmoji.emojis import get_emoji
 # Definir colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE  = (0, 0, 255)
-PURPLE = (128, 0, 128)
-ORANGE = (255, 165, 0) 
-PINK = (255,105,180)
+
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -59,14 +54,63 @@ def main():
 
 # Gestionar events
 def app_events():
+    global car
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT: # Botó tancar finestra
             return False
+        elif  event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                car["direction_x"] = "left"
+            elif event.key == pygame.K_RIGHT:
+                car["direction_x"] = "right"
+            elif event.key == pygame.K_UP:
+                car["direction_y"] = "up"
+            elif  event.key == pygame.K_DOWN:
+                car["direction_y"] = "down"
+        elif  event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                if car["direction_x"] == "left":
+                    car["direction_x"] = "none"
+            elif event.key == pygame.K_RIGHT:
+                if car["direction_x"] == "right":
+                    car["direction_x"] = "none"
+            elif event.key == pygame.K_UP:
+                if car["direction_y"] == "up":
+                    car["direction_y"] = "none"
+            elif event.key == pygame.K_DOWN:
+                if car["direction_y"] == "down":
+                    car["direction_y"] = "none"
     return True
 
 # Fer càlculs
 def app_run():
-    pass
+    global car
+    delta_time = clock.get_time() / 1000.0
+
+    if car["direction_x"] == "left":
+        car["x"] = car["x"]  - car["speed"] * delta_time
+        car["angle"] = 90
+    elif  car["direction_x"] == "right":
+        car["x"] = car["x"] + car["speed"] * delta_time
+        car["angle"] = -90
+    
+    if  car["direction_y"] == "up":
+        car["y"] = car["y"] - car["speed"] * delta_time
+        if car["direction_x"] == "none":
+            car["angle"] = 0
+        elif car["direction_x"] == "right":
+            car["angle"] = 315
+        elif car["direction_x"] == "left":
+            car["angle"] = 45
+    elif car["direction_y"] == "down":
+        car["y"] = car["y"] + car["speed"] * delta_time
+        if car["direction_x"] == "none":
+            car["angle"] = 180
+        elif car["direction_x"] == "right":
+            car["angle"] = 225
+        elif car["direction_x"] == "left":
+            car["angle"] = 135
 
 # Dibuixar
 def app_draw():
@@ -77,9 +121,9 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
-   
-
-
+    rotate_img = pygame.transform.rotate(car["img"], car["angle"])
+    rect = rotate_img.get_rect(center=(car["x"], car["y"]))
+    screen.blit(rotate_img, rect)
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
