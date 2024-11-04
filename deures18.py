@@ -75,7 +75,7 @@ def app_draw():
         ]
         
 
-        pygame.draw.line(screen, color, points)
+        pygame.draw.polygon(screen, color, points)
 
 
     # Actualitzar el dibuix a la finestra
