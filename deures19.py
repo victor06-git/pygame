@@ -74,20 +74,20 @@ def draw_moves(color, start_pos, moves):
         direction = move["direction"]
         distance = move["distance"]
     
-    if direction == "up":
-        new_x, new_y = x, y - distance
-    elif direction == "down":
-        new_x, new_y = x, y + distance
-    elif  direction == "left":
-        new_x, new_y = x - distance, y
-    elif direction == "right":
-        new_x, new_y =  x + distance, y
-    else:
-        continue
+        if direction == "up":
+            new_x, new_y = x, y - distance
+        elif direction == "down":
+            new_x, new_y = x, y + distance
+        elif  direction == "left":
+            new_x, new_y = x - distance, y
+        elif direction == "right":
+            new_x, new_y =  x + distance, y
+        else:
+            continue
 
-    polygon.append((new_x, new_y))
+        polygon.append((new_x, new_y))
 
-    x, y = new_x, new_y
+        x, y = new_x, new_y
 
     pygame.draw.polygon(screen, color, polygon)    
 
