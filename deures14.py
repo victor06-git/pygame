@@ -54,7 +54,14 @@ def app_draw():
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
     # dibuix
-    
+    for counter in range(0,11):
+        light = counter * (255 / 10)
+        x = 50 + (counter * 50)
+
+        pygame.draw.rect(screen, (light, 0, 0), (x, 150, 50, 50))
+        pygame.draw.rect(screen, (0, light, 0), (x, 200, 50, 50))
+        pygame.draw.rect(screen, (0, 0, light), (x, 250, 50, 50))
+        pygame.draw.rect(screen, (light, light, light), (x, 300, 50, 50))
 
 
     # Actualitzar el dibuix a la finestra
