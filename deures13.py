@@ -19,12 +19,12 @@ screen = pygame.display.set_mode((640, 480))
 pygame.display.set_caption('Window Title')
 
 #Cotxe
-path = os.path.join(os.path.dirname(__file__), "./assets/exercici13/car.png")
+path = os.path.join(os.path.dirname(__file__), "./assets/exercici013/car.png")
 img_car = pygame.image.load(path).convert_alpha()
 img_car = cuadricula.scale_image(pygame, img_car, target_width=15)
 
 #Circuit
-path = os.path.join(os.path.dirname(__file__), "./assets/exercici13/circuit.png")
+path = os.path.join(os.path.dirname(__file__), "./assets/exercici013/circuit.png")
 img_circuit = pygame.image.load(path).convert_alpha()
 img_circuit = cuadricula.scale_image(pygame, img_circuit, target_height=480)
 
@@ -120,6 +120,8 @@ def app_draw():
     
     # Dibuixar la graella de coordenades (llibreria utils)
     cuadricula.draw_grid(pygame, screen, 50)
+
+    screen.blit(img_circuit, (0,0))
     # dibuix
     rotate_img = pygame.transform.rotate(car["img"], car["angle"])
     rect = rotate_img.get_rect(center=(car["x"], car["y"]))
