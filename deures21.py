@@ -30,7 +30,7 @@ board = {
         "y" : 50
     },
     "size" : {
-        "rows" : 15,
+        "rows" : 10,
         "cols" : 10
     },
     "cell_size" : 25,
@@ -129,7 +129,7 @@ def app_draw():
 
 def get_cell_value(cell):
     global board_values
-    if cell["row" != -1 ] and cell["column"] != -1:
+    if cell["row"] != -1  and cell["column"] != -1:
         row = cell["row"]
         col = cell["column"]
         return board_values[row][col]
