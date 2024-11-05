@@ -19,7 +19,10 @@ clock = pygame.time.Clock()
 
 # Definir la finestra
 screen = pygame.display.set_mode((640, 480))
-pygame.display.set_caption('Solar System')
+pygame.display.set_caption('Clock')
+
+# Definir variables globals
+font = pygame.font.SysFont("Arial", 16)
 
 time = { 
     "hours": 0, 
@@ -78,8 +81,17 @@ def app_draw():
     # Dibuixar la graella
     cuadricula.draw_grid(pygame, screen, 50)
 
+    center = { "x": 325, "y": 250 }
+
     
-    
+    for num in range(1, 13):
+        angle = ()
+        num_pos = cuadricula.point_on_circle()
+        coord_pos = ()
+        label = font.render(str(num), True, WHITE)
+        label_rect = label.get_rect(center=coord_pos)
+        screen.blit(label, label_rect)
+
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
 
