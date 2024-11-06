@@ -98,8 +98,8 @@ def draw_board(board):
     cell_size = board["cell_size"]
 
     for row in range(rows):
-        for cols in range(cols):
-            rect = (x_start + cols * cell_size, y_start + row * cell_size, cell_size, cell_size)
+        for col in range(cols):
+            rect = (x_start + col * cell_size, y_start + row * cell_size, cell_size, cell_size)
             pygame.draw.rect(screen, BLACK, rect, 2)
 
 

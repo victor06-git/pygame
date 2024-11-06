@@ -85,7 +85,7 @@ def app_draw():
 
     center = { "x": 325, "y": 250 }
     cord_center = (center["x"], center["y"])
-    radio = 20
+    radio = 200
 
     graus_hora = (360/12)
     hora_angle = (graus_hora * time["hours"]) + offset
@@ -97,13 +97,13 @@ def app_draw():
     minut_angle = (graus_minut * time["minutes"]) + offset
     minut = cuadricula.point_on_circle(center, radio * 0.7, minut_angle)
     minut_coord = (minut["x"], minut["y"])
-    pygame.draw.line(screen, WHITE, cord_center, minut_coord, 7)
+    pygame.draw.line(screen, BLUE, cord_center, minut_coord, 6)
     
     graus_segons = (360/60)
     segons_angle = (graus_segons * time["seconds"]) + offset
     segons = cuadricula.point_on_circle(center, radio * 0.9, segons_angle)
     segons_coord = (segons["x"], segons["y"])
-    pygame.draw.line(screen, WHITE, cord_center, segons_coord, 3)
+    pygame.draw.line(screen, RED, cord_center, segons_coord, 2)
     
 
     for num in range(1, 13):

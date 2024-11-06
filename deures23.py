@@ -82,7 +82,7 @@ def app_run():
 def app_draw():
     global sun, planets
     # Pintar el fons de blanc
-    screen.fill(WHITE)
+    screen.fill(BLACK)
 
     # Dibuixar la graella
     cuadricula.draw_grid(pygame, screen, 50)

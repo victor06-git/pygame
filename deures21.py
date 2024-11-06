@@ -123,6 +123,7 @@ def app_draw():
                     pygame.draw.rect(screen, YELLOW, rect)
 
     draw_board_values()
+    pygame.draw.polygon(screen, BLACK, [(50,50),(300,50),(300,300),(50,300)], 5) #Quadre 
 
     # Actualitzar el dibuix a la finestra
     pygame.display.update()
