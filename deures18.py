@@ -56,7 +56,8 @@ def app_draw():
     # dibuix
     
     center = {"x":300,"y":250}
-    for angle in range(0, 361, 15):
+
+    for angle in range(0, 361, 1):
 
         pos_x_y = cuadricula.point_on_circle(center, 25, angle)
         pos2_x_y = cuadricula.point_on_circle(center, 150, angle)
