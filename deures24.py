@@ -76,18 +76,40 @@ def app_draw():
     global time
     
     # Pintar el fons de blanc
-    screen.fill(WHITE)
+    screen.fill(BLACK)
 
     # Dibuixar la graella
     cuadricula.draw_grid(pygame, screen, 50)
 
-    center = { "x": 325, "y": 250 }
+    offset = -90
 
+    center = { "x": 325, "y": 250 }
+    cord_center = (center["x"], center["y"])
+    radio = 20
+
+    graus_hora = (360/12)
+    hora_angle = (graus_hora * time["hours"]) + offset
+    hora = cuadricula.point_on_circle(center, radio * 0.4, hora_angle)
+    hora_coord = (hora["x"], hora["y"])
+    pygame.draw.line(screen, WHITE, cord_center, hora_coord, 11)
     
+    graus_minut = (360/60)
+    minut_angle = (graus_minut * time["minutes"]) + offset
+    minut = cuadricula.point_on_circle(center, radio * 0.7, minut_angle)
+    minut_coord = (minut["x"], minut["y"])
+    pygame.draw.line(screen, WHITE, cord_center, minut_coord, 7)
+    
+    graus_segons = (360/60)
+    segons_angle = (graus_segons * time["seconds"]) + offset
+    segons = cuadricula.point_on_circle(center, radio * 0.9, segons_angle)
+    segons_coord = (segons["x"], segons["y"])
+    pygame.draw.line(screen, WHITE, cord_center, segons_coord, 3)
+    
+
     for num in range(1, 13):
-        angle = ()
-        num_pos = cuadricula.point_on_circle()
-        coord_pos = ()
+        angle = (graus_hora * num + offset)
+        num_pos = cuadricula.point_on_circle(center, radio, angle)
+        coord_pos = (num_pos["x"], num_pos["y"])
         label = font.render(str(num), True, WHITE)
         label_rect = label.get_rect(center=coord_pos)
         screen.blit(label, label_rect)
